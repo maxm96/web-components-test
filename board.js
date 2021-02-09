@@ -32,6 +32,13 @@ class Board extends HTMLElement
     }
 
     addOpponent(opponent) {
+        const opponentElem = document.createElement('my-opponent')
+
+        if (opponent.name) opponentElem.setAttribute('name', opponent.name)
+        if (opponent.status) opponentElem.setAttribute('status', opponent.status)
+        if (opponent.playedCards) opponentElem.setAttribute('played-cards', opponent.playedCards.join(','))
+
+        this.opponents.appendChild(opponentElem)
     }
 
     addCard(card) {

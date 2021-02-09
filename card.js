@@ -1,4 +1,4 @@
-class Card extends HTMLElement
+class Card extends Component
 {
     constructor() {
         super()
@@ -44,10 +44,6 @@ class Card extends HTMLElement
         `
 
         shadow.appendChild(cardContainer)
-    }
-
-    getAttr(attr) {
-        return this.getAttribute(attr) || ''
     }
 
     // Since a card can be dynamically created we must set attributes once component is attached to dom
