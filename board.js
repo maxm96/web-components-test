@@ -38,6 +38,15 @@ class Board extends HTMLElement
         if (opponent.status) opponentElem.setAttribute('status', opponent.status)
         if (opponent.playedCards) opponentElem.setAttribute('played-cards', opponent.playedCards.join(','))
 
+        // Make the opponent a droppable zone
+        opponentElem.addEventListener('dragover', (e) => {
+            e.preventDefault()
+            e.dataTransfer.dropEffect = 'link'
+        })
+        opponentElem.addEventListener('drop', (e) => {
+            console.log(e.dataTransfer.getData('text/plain'))
+        })
+
         this.opponents.appendChild(opponentElem)
     }
 
@@ -49,6 +58,13 @@ class Board extends HTMLElement
         if (card.count) cardElem.setAttribute('count', card.count)
         if (card.image) cardElem.setAttribute('image', card.image)
         if (card.description) cardElem.setAttribute('description', card.description)
+
+        // Make the card draggable
+        cardElem.setAttribute('draggable', true)
+        cardElem.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', card.name)
+            e.dataTransfer.dropEffect = 'link'
+        })
 
         this.userHand.appendChild(cardElem)
     }
