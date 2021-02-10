@@ -44,7 +44,7 @@ class Board extends HTMLElement
             e.dataTransfer.dropEffect = 'link'
         })
         opponentElem.addEventListener('drop', (e) => {
-            console.log(e.dataTransfer.getData('text/plain'))
+            this.removeCard(e.dataTransfer.getData('text/plain'))
         })
 
         this.opponents.appendChild(opponentElem)
@@ -59,10 +59,12 @@ class Board extends HTMLElement
         if (card.image) cardElem.setAttribute('image', card.image)
         if (card.description) cardElem.setAttribute('description', card.description)
 
+        cardElem.classList.add(this.cardClass(card.title))
+
         // Make the card draggable
         cardElem.setAttribute('draggable', true)
         cardElem.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('text/plain', card.name)
+            e.dataTransfer.setData('text/plain', card.title)
             e.dataTransfer.dropEffect = 'link'
         })
 
@@ -70,7 +72,19 @@ class Board extends HTMLElement
     }
 
     removeCard(cardName) {
+        let cardClass = this.cardClass(cardName)
+        let cardElem = this.userHand.querySelector(`.${cardClass}`)
 
+        if (!cardElem) {
+            console.error(`Unable to find card with class ${cardClass}`)
+            return
+        }
+
+        cardElem.parentNode.removeChild(cardElem)
+    }
+
+    cardClass(cardName) {
+        return cardName.toLowerCase().replace(' ', '-')
     }
 
     connectedCallback() {
