@@ -14,6 +14,11 @@ class Board extends HTMLElement
             width: 100%;
         }
         
+        .top-bar {
+            width: 100%;
+            height: 275px;
+        }
+        
         .opponents, .user-hand {
             display: flex;
             width: 100%;
@@ -24,6 +29,10 @@ class Board extends HTMLElement
             flex-direction: row-reverse;
         }
         </style>
+        
+        <div class="top-bar">
+            <my-countdown time="30"></my-countdown>
+        </div>
         
         <div class="opponents"></div>
         <div class="user-hand"></div>
@@ -94,6 +103,11 @@ class Board extends HTMLElement
     connectedCallback() {
         this.opponents = this.shadowRoot.querySelector('.opponents')
         this.userHand = this.shadowRoot.querySelector('.user-hand')
+        this.countdown = this.shadowRoot.querySelector('my-countdown')
+
+        this.countdown.addEventListener('countdownfinished', (e) => {
+            console.log('countdownfinished', e)
+        })
     }
 }
 
