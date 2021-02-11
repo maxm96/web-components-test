@@ -1,3 +1,5 @@
+import Component from './component'
+
 class Opponent extends Component
 {
     constructor() {

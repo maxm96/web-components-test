@@ -1,4 +1,4 @@
-class Component extends HTMLElement
+module.exports = class Component extends HTMLElement
 {
     constructor() {
         super()

@@ -1,3 +1,7 @@
+import './card'
+import './opponent'
+import './countdown'
+
 class Board extends HTMLElement
 {
     constructor() {
