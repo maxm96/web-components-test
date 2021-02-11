@@ -17,7 +17,11 @@ class Board extends HTMLElement
         .opponents, .user-hand {
             display: flex;
             width: 100%;
-            height: 480px;
+            height: 300px;
+        }
+        
+        .user-hand {
+            flex-direction: row-reverse;
         }
         </style>
         
