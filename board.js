@@ -16,7 +16,7 @@ class Board extends HTMLElement
         
         .top-bar {
             width: 100%;
-            height: 275px;
+            height: 150px;
         }
         
         .opponents, .user-hand {

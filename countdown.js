@@ -18,7 +18,8 @@ class Countdown extends Component
         }
         
         .time {
-            font-size: 18px;
+            font-size: 26px;
+            margin: 10px;
         }
         </style>
         
